@@ -111,3 +111,4 @@ C:\Users\The user\Desktop\PractiCode\Practicode3\TodoApi\obj\Debug\net8.0\TodoAp
 C:\Users\The user\Desktop\PractiCode\Practicode3\TodoApi\bin\Debug\net8.0\TodoApi.staticwebassets.endpoints.json
 C:\Users\The user\Desktop\PractiCode\Practicode3\TodoApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\The user\Desktop\PractiCode\Practicode3\TodoApi\obj\Debug\net8.0\staticwebassets\msbuild.TodoApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\The user\Desktop\PractiCode\Practicode3\TodoApi\obj\Debug\net8.0\TodoApi.sourcelink.json
