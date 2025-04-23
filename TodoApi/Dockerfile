@@ -7,7 +7,7 @@ ENV ASPNETCORE_URLS=http://+:5073
 FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["TodoApi/TodoApi.csproj", "TodoApi/"]
+COPY ["TodoApi.csproj", "TodoApi/"]
 RUN dotnet restore "TodoApi\TodoApi.csproj"
 COPY . .
 WORKDIR "/src/TodoApi"
