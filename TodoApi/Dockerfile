@@ -1,17 +1,38 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+# FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
+# WORKDIR /app
+# EXPOSE 5073
+
+# ENV ASPNETCORE_URLS=http://+:5073
+
+# FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# ARG configuration=Release
+# WORKDIR /src
+# COPY ["TodoApi.csproj", "TodoApi/"]
+# RUN dotnet restore "TodoApi/TodoApi.csproj"
+# COPY . .
+# WORKDIR "/TodoApi"
+# RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
+
+# FROM build AS publish
+# ARG configuration=Release
+# RUN dotnet publish "TodoApi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+
+# FROM base AS final
+# WORKDIR /app
+# COPY --from=publish /app/publish .
+# ENTRYPOINT ["dotnet", "TodoApi.dll"]
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 5073
-
 ENV ASPNETCORE_URLS=http://+:5073
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
-WORKDIR /src
-COPY ["TodoApi.csproj", "TodoApi/"]
-RUN dotnet restore "TodoApi/TodoApi.csproj"
-COPY . .
-WORKDIR "/TodoApi"
+WORKDIR /app 
+COPY ["TodoApi.csproj", "./"]
+RUN dotnet restore "TodoApi.csproj"
+COPY . . 
 RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
@@ -22,3 +43,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TodoApi.dll"]
+
