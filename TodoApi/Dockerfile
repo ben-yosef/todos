@@ -11,7 +11,7 @@ WORKDIR /src
 COPY ["TodoApi.csproj", "TodoApi/"]
 RUN dotnet restore "TodoApi/TodoApi.csproj"
 COPY . .
-WORKDIR "/src/TodoApi"
+WORKDIR "/TodoApi"
 RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
